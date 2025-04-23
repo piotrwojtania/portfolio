@@ -347,6 +347,6 @@ from sprzedawane_produkty where kategoria = 'pizza'
 
 ![wykres7_8](https://github.com/piotrwojtania/portfolio/blob/02d4fe40882b39aca2bacd0f7920c729ab92154c/images/7_8.jpg)
 
-![wykres9a](https://github.com/piotrwojtania/portfolio/blob/471fbd90112927092de167adf34e5ba67dfed91c/images/9b.jpg)
+![wykres9a](https://github.com/piotrwojtania/portfolio/blob/cf5a1fc059bb8273f8e7b6c54b77f310c5df6831/images/9a.jpg)
 
 ![wykres9b](https://github.com/piotrwojtania/portfolio/blob/471fbd90112927092de167adf34e5ba67dfed91c/images/9b.jpg)
