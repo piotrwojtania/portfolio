@@ -1,0 +1,37 @@
+﻿kategoria;nazwa;pozycja sezonowa; cena brutto ;stawka VAT; cena netto ; foodcost netto ;foodcost;marża
+pizza;Al Formaggio;; 43,00 zł ;0,08; 39,56 zł ; 8,73 zł ;22,07%; 30,83 zł 
+pizza;Ananas;; 41,00 zł ;0,08; 37,72 zł ; 8,46 zł ;22,44%; 29,26 zł 
+pizza;Burratina;; 47,00 zł ;0,08; 43,24 zł ; 12,76 zł ;29,51%; 30,48 zł 
+pizza;Capriciosa;; 43,00 zł ;0,08; 39,56 zł ; 6,86 zł ;17,34%; 32,70 zł 
+pizza;Capriciosa Lunch;; 33,00 zł ;0,08; 30,36 zł ; 8,06 zł ;26,55%; 22,30 zł 
+pizza;Carbonara;; 43,00 zł ;0,08; 39,56 zł ; 8,88 zł ;22,44%; 30,68 zł 
+pizza;Cipolla;; 39,00 zł ;0,08; 35,88 zł ; 6,98 zł ;19,45%; 28,90 zł 
+pizza;Cotto;; 37,00 zł ;0,08; 34,04 zł ; 6,97 zł ;20,48%; 27,07 zł 
+pizza;Diavola;; 43,00 zł ;0,08; 39,56 zł ; 8,40 zł ;21,23%; 31,16 zł 
+pizza;Dolce;; 39,00 zł ;0,08; 35,88 zł ; 8,05 zł ;22,44%; 27,83 zł 
+pizza;Gamberi;; 44,00 zł ;0,08; 40,48 zł ; 9,08 zł ;22,44%; 31,40 zł 
+pizza;Jagoda;tak; 39,00 zł ;0,08; 35,88 zł ; 8,05 zł ;22,44%; 27,83 zł 
+pizza;Kapusta;tak; 39,00 zł ;0,08; 35,88 zł ; 8,05 zł ;22,44%; 27,83 zł 
+pizza;Margherita;; 33,00 zł ;0,08; 30,36 zł ; 5,40 zł ;17,79%; 24,96 zł 
+pizza;Margherita Bez Zielonego;; 33,00 zł ;0,08; 30,36 zł ; 5,20 zł ;17,13%; 25,16 zł 
+pizza;Margherita Lunch;; 33,00 zł ;0,08; 30,36 zł ; 6,60 zł ;21,74%; 23,76 zł 
+pizza;Mortadella;; 45,00 zł ;0,08; 41,40 zł ; 11,57 zł ;27,95%; 29,83 zł 
+pizza;Napoli Lunch;; 33,00 zł ;0,08; 30,36 zł ; 7,90 zł ;26,02%; 22,46 zł 
+pizza;Nduja;; 43,00 zł ;0,08; 39,56 zł ; 8,85 zł ;22,37%; 30,71 zł 
+pizza;Patata;; 36,00 zł ;0,08; 33,12 zł ; 6,43 zł ;19,41%; 26,69 zł 
+pizza;Patata Lunch;; 33,00 zł ;0,08; 30,36 zł ; 7,63 zł ;25,13%; 22,73 zł 
+pizza;Pera;; 43,00 zł ;0,08; 39,56 zł ; 8,88 zł ;22,44%; 30,68 zł 
+pizza;Porro;tak; 47,00 zł ;0,08; 43,24 zł ; 11,30 zł ;26,13%; 31,94 zł 
+pizza;Prosciutto Crudo;; 48,00 zł ;0,08; 44,16 zł ; 11,39 zł ;25,79%; 32,77 zł 
+pizza;Rafano;; 39,00 zł ;0,08; 35,88 zł ; 6,78 zł ;18,90%; 29,10 zł 
+pizza;Salame;; 39,00 zł ;0,08; 35,88 zł ; 6,70 zł ;18,67%; 29,18 zł 
+pizza;Salsiccia;; 43,00 zł ;0,08; 39,56 zł ; 8,82 zł ;22,30%; 30,74 zł 
+pizza;Spianata Lunch;; 33,00 zł ;0,08; 30,36 zł ; 9,17 zł ;30,20%; 21,19 zł 
+pizza;Szparag;tak; 43,00 zł ;0,08; 39,56 zł ; 9,03 zł ;22,83%; 30,53 zł 
+pizza;Tonno;; 42,00 zł ;0,08; 38,64 zł ; 8,67 zł ;22,44%; 29,97 zł 
+pizza;Tortufo;; 46,00 zł ;0,08; 42,32 zł ; 10,16 zł ;24,01%; 32,16 zł 
+pizza;uniwersalna;; 38,13 zł ;0,08; 35,08 zł ; 7,87 zł ;22,44%; 27,21 zł 
+pizza;Vino;tak; 48,00 zł ;0,08; 44,16 zł ; 10,24 zł ;23,19%; 33,92 zł 
+pizza;Warzywo;; 39,00 zł ;0,08; 35,88 zł ; 8,05 zł ;22,44%; 27,83 zł 
+pizza;z Dynią;tak; 43,00 zł ;0,08; 39,56 zł ; 8,88 zł ;22,44%; 30,68 zł 
+pizza;z Kurkami;tak; 43,00 zł ;0,08; 39,56 zł ; 8,88 zł ;22,44%; 30,68 zł 
