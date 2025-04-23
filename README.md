@@ -340,3 +340,9 @@ from sprzedawane_produkty where kategoria = 'pizza'
 2. Wykresy
 
 ![wykres1_2](https://github.com/piotrwojtania/portfolio/blob/784994f89fd16e45a77c7166a7fc283a2c70d700/images/1_2.jpg)
+
+![wykres3_4](https://github.com/piotrwojtania/portfolio/blob/dd0e0efb75988550eb9c69dda9b36bc98087e635/images/3_4.)
+
+![wykres1_2]()
+![wykres1_2]()
+![wykres1_2]()
