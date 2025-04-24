@@ -368,7 +368,7 @@ W drugiej kolumnie liczymy ilość sprzedanych grup pizz w przeliczeniu na jedne
 il. sprzed. grup pizz na dzień w ofercie = 
 DIVIDE(sprzedawane_produkty[Il. sprzedanych grup pizz total], sprzedawane_produkty[dni_w_ofercie],0)
 ```
-![wykres5_6](https://github.com/piotrwojtania/portfolio/blob/1c9c3f96b1b7ce472615a425e705b4b427bc70be/images/5_6.jpg)
+![wykres5_6](https://github.com/piotrwojtania/portfolio/blob/14382274eb49838b5444bdfe4a8ed55564be163f/images/5_6_.jpg)
 
 Chcemy się dowiedzieć jaki zysk generują pizze (po zgrupowaniu) w przeliczeniu na jeden dzień w ofercie. Będziemy musieli wykonać kilka dodatkowych akcji. 
 
