@@ -341,11 +341,17 @@ from sprzedawane_produkty where kategoria = 'pizza'
 
 ![wykres1_2](https://github.com/piotrwojtania/portfolio/blob/784994f89fd16e45a77c7166a7fc283a2c70d700/images/1_2.jpg)
 
-Aby to zrobić stworzyłem dwie dodatkowe kolumny obliczeniowe. Pierwsza kolumna z całkowitą ilością sprzedanych pizz danego rodzaju. 
-Kod DAX pierwszej kolumny:
-<pre> ```DAX 
-Il. sprzedanych rodzajów pizz total = CALCULATE(SUM(sprzedawane_produkty[Sprzedana_ilość]),ALLEXCEPT(sprzedawane_produkty,sprzedawane_produkty[Nazwa]))
-``` </pre>
+Aby to zrobić stworzyłem dwie dodatkowe kolumny obliczeniowe. Pierwsza kolumna z całkowitą ilością sprzedanych pizz danego rodzaju. Poniżej kod DAX pierwszej kolumny.
+``` 
+Il. sprzedanych rodzajów pizz total = 
+CALCULATE(SUM(sprzedawane_produkty[Sprzedana_ilość]),ALLEXCEPT(sprzedawane_produkty,sprzedawane_produkty[Nazwa]))
+```
+
+Druga kolumna z ilością sprzedanych pizz danego rodzaju w przeliczeniu na jeden dzień w którym pizza była w ofercie. Czyli np. jeśli sprzedało się 50 pizz danego rodzaju i pizza była w menu przez 10 dni to wartość w kolumnie będzie 5. Poniżej kod DAX drugiej kolumny. 
+```
+il. sprzed. pizz na dzień w ofercie = 
+DIVIDE(sprzedawane_produkty[Il. sprzedanych rodzajów pizz total],sprzedawane_produkty[dni_w_ofercie],0)
+```
 
 ![wykres3_4](https://github.com/piotrwojtania/portfolio/blob/dd0e0efb75988550eb9c69dda9b36bc98087e635/images/3_4.jpg)
 
