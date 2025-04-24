@@ -35,7 +35,7 @@ alter table sprzedawane_produkty
 	,change column `Cena jednost.` Cena_jednost varchar(200)
 ```
 
-3. Zmiana typów kolumn i formatów na poprawne (w kolumnach typu tekst znajdowały się liczby z częścią dziesiętną oddzielone przecinkiem )
+3. Zmiana typów kolumn i formatów na poprawne (w kolumnach typu tekst znajdowały się liczby z częścią dziesiętną oddzielone przecinkiem)
 
 - Sprawdzenie "selectem"
 ```sql
@@ -63,7 +63,8 @@ alter table sprzedawane_produkty
 - Wprowadzenie wartości z "." zamiast "," do nowych kolumn z poprawionymi typami danych
 ```sql
 update sprzedawane_produkty
-	set VAT_dec = cast(REPLACE(VAT, ',', '.') as decimal(10,2))
+	set 
+	VAT_dec = cast(REPLACE(VAT, ',', '.') as decimal(10,2))
 	,Suma_VAT_dec = cast(REPLACE(Suma_VAT, ',', '.') as decimal(10,2))
 	,Śr_cena_sprzedaż_netto_dec = cast(REPLACE(Śr_cena_sprzedaż_netto, ',', '.') as decimal(10,2))
 	,Śr_cena_sprzedaż_brutto_dec = cast(REPLACE(Śr_cena_sprzedaż_brutto, ',', '.') as decimal(10,2))
@@ -141,7 +142,7 @@ update sprzedawane_produkty
 	set id = (@id := @id+1)
 order by data_trans, godzina
 ```
-6. Scalenie powielonych nazw produktów (Nazwy produktów było zmieniane w czasie oraz nazwy niektórych produktów były nieco inne w sysyemia zamówień online od tych w systemie kasowym)
+6. Scalenie powielonych nazw produktów (Nazwy produktów były zmieniane w czasie oraz nazwy niektórych produktów były nieco inne w sysyemia zamówień online od tych w systemie kasowym)
 - Stworzenie kopii zapasowej tabeli
 ```sql
 create table sprzedawane_produkty_kopia2_przed_zmianą_kategorii as select * from sprzedawane_produkty
