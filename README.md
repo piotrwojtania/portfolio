@@ -368,7 +368,7 @@ W drugiej kolumnie liczymy ilość sprzedanych grup pizz w przeliczeniu na jedne
 il. sprzed. grup pizz na dzień w ofercie = 
 DIVIDE(sprzedawane_produkty[Il. sprzedanych grup pizz total], sprzedawane_produkty[dni_w_ofercie],0)
 ```
-![wykres5_6](https://github.com/piotrwojtania/portfolio/blob/c3fcdfb9985e4e9aa5aa96557e5a1885c54b6688/images/5_6.jpg)
+![wykres5_6](https://github.com/piotrwojtania/portfolio/blob/1c9c3f96b1b7ce472615a425e705b4b427bc70be/images/5_6.jpg)
 
 Chcemy się dowiedzieć jaki zysk generują pizze (po zgrupowaniu) w przeliczeniu na jeden dzień w ofercie. Będziemy musieli wykonać kilka dodatkowych akcji. 
 
@@ -419,6 +419,8 @@ sprzedawane_produkty[il. sprzed. grup pizz na dzień w ofercie]*sprzedawane_prod
 ```
 
 ![wykres7_8](https://github.com/piotrwojtania/portfolio/blob/02d4fe40882b39aca2bacd0f7920c729ab92154c/images/7_8.jpg)
+
+
 
 Poniżej matryca BCG (wolumen sprzedaży + marża) dla wszystkich analizowanych produktów. Objaśnienie pod wykresem. 
 ![wykres9a](https://github.com/piotrwojtania/portfolio/blob/cf5a1fc059bb8273f8e7b6c54b77f310c5df6831/images/9a.jpg)
