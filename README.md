@@ -4,11 +4,11 @@ Wykorzystywane oprogramowanie: dBeaver (MySQL), PowerBI (+PowerQuery +DAX)
 
 ### Opis Projektu
 
-Celem analizy jest dostarczenie informacji pomocnych przy zmianie menu lokalu, czyli np.: które pozycje należy usunąć z oferty, które zostawić, które zmodyfikować np. zoptymalizować foodcost, zminić cenę, zaoferować w zestawie z innym produktem itp.
+Celem analizy jest dostarczenie informacji pomocnych przy zmianie menu lokalu, czyli np.: które pozycje należy usunąć z oferty, które zostawić, które zmodyfikować np. zoptymalizować foodcost, zmienić cenę, zaoferować w zestawie z innym produktem itp.
 
-Dane wejściowe stanowiły informacje z systemu sprzedażowego POS. 
+Dane wejściowe stanowiły informacje z systemu sprzedażowego POS lokalu. 
 
-Pierwszym etapem pracy było oczyszczenie i transformacja danych przy użyciu języka SQL w środowisku dBeaver (MySQL). Następnie dane zostały przeniesione do Power BI w celu dalszej analizy i wizualizacji.
+Pierwszym etapem pracy było oczyszczenie i transformacja danych przy użyciu języka SQL programie dBeaver. Następnie dane zostały przeniesione do Power BI w celu dalszej analizy i wizualizacji.
 
 ## I. SQL - Oczyszczenie i przygotowanie danych do analizy 
 
