@@ -421,8 +421,6 @@ sprzedawane_produkty[il. sprzed. grup pizz na dzień w ofercie]*sprzedawane_prod
 ![wykres7_8](https://github.com/piotrwojtania/portfolio/blob/c8d74878c57c983902dc44a2c9776cb6b7d9ee00/images/7_8.jpg)
 
 Poniżej matryca BCG (wolumen sprzedaży + marża) dla wszystkich analizowanych produktów. Objaśnienie pod wykresem. 
-![wykres9a](https://github.com/piotrwojtania/portfolio/blob/cf5a1fc059bb8273f8e7b6c54b77f310c5df6831/images/9a.jpg)
-
-
+![wykres9a](https://github.com/piotrwojtania/portfolio/blob/9b03ccb340926ebda18eefe62e9963b041f402e5/images/9a.jpg)
 
 ![wykres9b](https://github.com/piotrwojtania/portfolio/blob/471fbd90112927092de167adf34e5ba67dfed91c/images/9b.jpg)
