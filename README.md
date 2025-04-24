@@ -337,7 +337,7 @@ from sprzedawane_produkty where kategoria = 'pizza'
 
 1. Wczytanie danych do PowerBI
 
-2. Wykresy
+2. Analiza i wykresy
 
 ![wykres1_2](https://github.com/piotrwojtania/portfolio/blob/784994f89fd16e45a77c7166a7fc283a2c70d700/images/1_2.jpg)
 
@@ -355,9 +355,74 @@ DIVIDE(sprzedawane_produkty[Il. sprzedanych rodzajów pizz total],sprzedawane_pr
 
 ![wykres3_4](https://github.com/piotrwojtania/portfolio/blob/dd0e0efb75988550eb9c69dda9b36bc98087e635/images/3_4.jpg)
 
+Grupujemy pokrewne pozycje za pomocąopcji "New group"
+![groups](https://github.com/piotrwojtania/portfolio/blob/497e8f4c1bcb99fc4b224f76097b5a66c2328239/images/groups.jpg)
+
+Musimy teraz obliczyć to co ostatnio tylko dla zgrupowanych pizz. Czyli znów potrzebujemy dwóch dodatkowych kolumn. W pierwszej liczymy całkowitą liczbę sprzedanych pizz (po zgrupowaniu). DAX:
+```
+Il. sprzedanych grup pizz total = 
+CALCULATE(SUM(sprzedawane_produkty[Sprzedana_ilość]),ALLEXCEPT(sprzedawane_produkty,sprzedawane_produkty[Nazwa (groups)]))
+```
+W drugiej kolumnie liczymy ilość sprzedanych grup pizz w przeliczeniu na jednen dzień w ofercie. DAX:
+```
+il. sprzed. grup pizz na dzień w ofercie = 
+DIVIDE(sprzedawane_produkty[Il. sprzedanych grup pizz total], sprzedawane_produkty[dni_w_ofercie],0)
+```
 ![wykres5_6](https://github.com/piotrwojtania/portfolio/blob/c3fcdfb9985e4e9aa5aa96557e5a1885c54b6688/images/5_6.jpg)
 
+Chcemy się dowiedzieć jaki zysk generują pizze (po zgrupowaniu) w przeliczeniu na jeden dzień w ofercie. Będziemy musieli wykonać kilka dodatkowych akcji. 
+
+Zacznijmy od dodania kolumny z ilością dni w ofercie dla całych grup. Dla zgrupowanych pizz przyjmujemy ilość dni dla pizzy z grupy która była w ofercie najdłużej, czyli np. jeśli Margherita była w ofecie 100 dni a Margherita Lunch 50 dni to w wartość dla całej grupy przyjmiemy jako 100. 
+
+```
+Dni w ofercie (grupa) = 
+CALCULATE(
+    MAX(sprzedawane_produkty[dni_w_ofercie]),
+    ALLEXCEPT(sprzedawane_produkty, sprzedawane_produkty[Nazwa (groups)])
+)
+```
+
+Następnie obliczymy ilość sprzedanych pizz (po zgrupowaniu) w przeliczeniu na jeden dzień w ofercie. 
+```
+il. sprzed. grup pizz na dzień w ofercie = 
+DIVIDE(
+	sprzedawane_produkty[Il. sprzedanych grup pizz total],
+	sprzedawane_produkty[Dni w ofercie (grupa)],
+	0)
+```
+Następnie liczymy marżę dla zgrupowanych pizz. W tabeli "kategorie_1" mamy podane marże dla poszczególnych pozycji. Marże dla grup obliczymy jako średnie ważone marż poszczególnych pizz które składają się na grupę, gdzie wagami będą ilości sprzedanych pizz.  
+
+Przykład:  
+Mamy grupe pizz "AB" na którą składają się pizze "A" i pizze "B".  
+Pizza "A" ma marżę 10zł i sprzedało się jej 20 sztuk.  
+Pizza "B" ma marżę 15 zł i sprzedało się jej 5 sztuk.  
+Licznik = 10x20 + 15x5 = 275  
+Mianownik = 20 + 5 = 25  
+licznik/mianownik = 275/25 = 11 = marża dla grupy pizz AB
+
+```
+marżaGrupa = 
+VAR Grupa = sprzedawane_produkty[Nazwa (groups)]
+VAR tabelaSprzedawaneProduktyMarza = 
+    ADDCOLUMNS(FILTER(sprzedawane_produkty, Grupa = sprzedawane_produkty[Nazwa (groups)]), "Marża", RELATED(Kategorie_1[marża]))
+VAR Licznik =
+    SUMX(tabelaSprzedawaneProduktyMarza, [Marża] * sprzedawane_produkty[il. sprzed. pizz na dzień w ofercie])
+VAR Mianownik = 
+    SUMX(tabelaSprzedawaneProduktyMarza, sprzedawane_produkty[il. sprzed. pizz na dzień w ofercie])
+RETURN DIVIDE(Licznik, Mianownik)
+```
+Finalnie obliczamy jaki zysk wypracowała średnio na dzień dana grupa pizz.
+
+```
+Zysk grupy na dzień = 
+sprzedawane_produkty[il. sprzed. grup pizz na dzień w ofercie]*sprzedawane_produkty[marżaGrupa]
+```
+
 ![wykres7_8](https://github.com/piotrwojtania/portfolio/blob/02d4fe40882b39aca2bacd0f7920c729ab92154c/images/7_8.jpg)
+
+
+
+
 
 ![wykres9a](https://github.com/piotrwojtania/portfolio/blob/cf5a1fc059bb8273f8e7b6c54b77f310c5df6831/images/9a.jpg)
 
