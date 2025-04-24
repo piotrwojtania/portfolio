@@ -418,7 +418,7 @@ Zysk grupy na dzień =
 sprzedawane_produkty[il. sprzed. grup pizz na dzień w ofercie]*sprzedawane_produkty[marżaGrupa]
 ```
 
-![wykres7_8](https://github.com/piotrwojtania/portfolio/blob/c8d74878c57c983902dc44a2c9776cb6b7d9ee00/images/7_8.jpg)
+![wykres7_8](https://github.com/piotrwojtania/portfolio/blob/f6d4b806e124cd00c0b419ff377248e7509732a2/images/7_8_.jpg)
 
 Poniżej matryca BCG (wolumen sprzedaży + marża) dla wszystkich analizowanych produktów. Objaśnienie pod wykresem. 
 ![wykres9a](https://github.com/piotrwojtania/portfolio/blob/9b03ccb340926ebda18eefe62e9963b041f402e5/images/9a.jpg)
