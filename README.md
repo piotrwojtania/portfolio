@@ -1,4 +1,4 @@
-# Analiza Danych - sprzedaż produktów pizzerii
+# Analiza Danych - sprzedaż produktów restauracji
 
 Wykorzystywane oprogramowanie: dBeaver (MySQL), PowerBI (+PowerQuery +DAX)
 
