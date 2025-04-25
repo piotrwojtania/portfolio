@@ -335,6 +335,7 @@ from sprzedawane_produkty where kategoria = 'pizza'
 ```
 
 ## II. (PowerBI) Analiza i wizualizacja danych
+*link do interaktywnych wykresów na portalu powerbi.com:* [klik](https://app.powerbi.com/links/faiNBUn0f2?ctid=4b059d10-47b6-4296-b9c4-46a2b9526960&pbi_source=linkShare)
 
 1. Wczytujemy dane do PowerBI
 
