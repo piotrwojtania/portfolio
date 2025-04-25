@@ -8,17 +8,17 @@ Celem analizy jest dostarczenie informacji pomocnych przy zmianie menu lokalu, c
 
 Dane wejściowe stanowiły informacje z systemu sprzedażowego POS lokalu. 
 
-Pierwszym etapem pracy było oczyszczenie i transformacja danych przy użyciu języka SQL programie dBeaver. Następnie dane zostały przeniesione do Power BI w celu dalszej analizy i wizualizacji.
+Pierwszym etapem pracy jest oczyszczenie i transformacja danych przy użyciu języka SQL w programie dBeaver. Następnie dane przenosimy do PowerBI w celu dalszej analizy i wizualizacji.
 
 ## I. SQL - Oczyszczenie i przygotowanie danych do analizy 
 
 
-1. Stworzenie kopii zapasowej tabeli
+1. Tworzymy kopię zapasową tabeli
 ```sql
 create table sprzedawane_produkty_kopia1_surowa as select * from sprzedawane_produkty
 ```
 
-2. Usunięcie spacji z nazw kolumn
+2. Usuwamy spacje z nazw kolumn
 ```sql
 alter table sprzedawane_produkty
 	change column `Numer zamówienia` Numer_zamówienia varchar(200)
@@ -35,9 +35,9 @@ alter table sprzedawane_produkty
 	,change column `Cena jednost.` Cena_jednost varchar(200)
 ```
 
-3. Zmiana typów kolumn i formatów na poprawne (w kolumnach typu tekst znajdowały się liczby z częścią dziesiętną oddzielone przecinkiem)
+3. Zmieniamy typy kolumn i formaty na poprawne (w kolumnach typu tekst znajdują się liczby z częściami dziesiętnymi oddzielonymi przecinkami)
 
-- Sprawdzenie "selectem"
+- Sprawdzamy selectem
 ```sql
 select 
 	VAT 
@@ -47,7 +47,7 @@ select
 from sprzedawane_produkty
 ```
 
-- Dodanie tymczasowych kolumn z docelowymi typami kolumn
+- Dodajemy tymczasowe kolumny z docelowymi typami kolumn
 ```sql
 alter table sprzedawane_produkty
 	add column VAT_dec decimal(10,2)
@@ -60,7 +60,7 @@ alter table sprzedawane_produkty
 	,add column Cena_jednost_dec decimal(10,2)
 ```
 
-- Wprowadzenie wartości z "." zamiast "," do nowych kolumn z poprawionymi typami danych
+- Wprowadzamy wartości z "." zamiast "," do nowych kolumn z poprawionymi typami danych
 ```sql
 update sprzedawane_produkty
 	set 
@@ -74,7 +74,7 @@ update sprzedawane_produkty
 	,Cena_jednost_dec = cast(REPLACE(Cena_jednost, ',', '.') as decimal(10,2))
 ```
 
-- Usunięcie podmienionych kolumn
+- Usuwamy podmienione kolumn
 ```sql
 alter table sprzedawane_produkty 
 	drop column VAT 
@@ -87,7 +87,7 @@ alter table sprzedawane_produkty
 	,drop column Cena_jednost
 ```
 
-- Przypisanie oryginalnych nazw kolumn nowym kolumnom z poprawnym formatem
+- Przypisujemy oryginalne nazwy kolumn nowym kolumnom z poprawnym formatem
 ```sql
 alter table sprzedawane_produkty 
 	rename column VAT_dec to VAT 
@@ -100,15 +100,15 @@ alter table sprzedawane_produkty
 	,rename column Cena_jednost_dec	to Cena_jednost	
 ```
 
-4. Wyciągnięcie daty i godziny z jednej kolumny i zmiana typu kolumny
-- Dodanie nowych kolumn na datę i godzinę
+4. Wyciągamy daty i godziny z jednej kolumny i zmieniamy typu kolumny
+- Dodajemy nowe kolumny na datę i godzinę
 ```sql
 alter table sprzedawane_produkty
 	add column data_trans date
 	,add column godzina time
 ```
 
-- Test rozdzielenia daty i godziny
+- Testujemy selectem rozdzielenie daty i godziny
 ```sql
 select 
 	Data_transakcji
@@ -118,20 +118,20 @@ from
 	sprzedawane_produkty
 ```
 
-- Wprowadzenie rozdzielonej daty i godziny do nowych kolumn o poprawnym formacie
+- Wprowadzamy rozdzielone daty i godziny do nowych kolumn o poprawnym formacie
 ```sql
 update sprzedawane_produkty set 
 	data_trans = cast(str_to_date(Data_transakcji, '%Y-%m-%d %H:%i') as date)
 	,godzina = cast(str_to_date(Data_transakcji, '%Y-%m-%d %H:%i') as time)
 ```
 
-- Usunięcie niepotrzebnej kolumny z datą i godziną
+- Usuwamy niepotrzebne kolumny z datą i godziną
 ```sql
 alter table sprzedawane_produkty
 	drop column Data_transakcji
 ```
 
-5. Stworzenie kolumny z ID (Chcemy, żeby numeracja zaczynała się chronologicznie po dacie transakcji)
+5. Tworzymy kolumnę z ID (Chcemy, żeby numeracja zaczynała się chronologicznie po dacie transakcji)
 ```sql
 alter table sprzedawane_produkty
 	add column id int
@@ -142,8 +142,8 @@ update sprzedawane_produkty
 	set id = (@id := @id+1)
 order by data_trans, godzina
 ```
-6. Scalenie powielonych nazw produktów (Nazwy produktów były zmieniane w czasie oraz nazwy niektórych produktów były nieco inne w sysyemia zamówień online od tych w systemie kasowym)
-- Stworzenie kopii zapasowej tabeli
+6. Scalamy powielone nazwy produktów (Nazwy produktów były zmieniane w czasie oraz nazwy niektórych produktów były nieco inne w sysyemia zamówień online od tych w systemie kasowym)
+- Tworzymy kopię zapasową tabeli
 ```sql
 create table sprzedawane_produkty_kopia2_przed_zmianą_kategorii as select * from sprzedawane_produkty
 ```
@@ -185,9 +185,9 @@ set Nazwa = case
 end
 ```
 
-7. Zajmujemy się tylko kategorią "pizza". Odfiltrujemy pozostałe pozycje poprzez stworzenie kolumny "kategoria"
+7. Zajmujemy się tylko kategorią "pizza". Filtrujemy pozostałe pozycje poprzez stworzenie kolumny "kategoria"
 
-- Sprawdzenie czy nazwy produktów nie zawierają zbędnych spacji
+- Sprawdzamy czy nazwy produktów nie zawierają zbędnych spacji
 
 ```sql
 select 
@@ -205,9 +205,9 @@ update sprzedawane_produkty set nazwa = TRIM(nazwa)
 update kategorie set nazwa = TRIM(nazwa)
 ```
 
-- Skopiowanie kolumny z kategorią z tabeli "kategorie" do tabeli "sprzedawane_produkty"
+- Kopiujemy kolumny z kategorią z tabeli "kategorie" do tabeli "sprzedawane_produkty"
 
-Sprawdzenie selectem  
+Sprawdzamy selectem  
 ```sql
 select 
 	sp.Nazwa 
@@ -217,12 +217,12 @@ from
 left join kategorie k on sp.Nazwa = k.nazwa
 ```
 
-Stworzenie nowej kolumny
+Tworzymy nowe kolumny
 ```sql
 alter table sprzedawane_produkty add column kategoria varchar(200)
 ```
 
-   Skopiowanie wartości do stworzonej kolumny z tabelki "kategorie"
+Kopiujemy wartości do nowej kolumny z tabelki "kategorie"
 ```sql
 update sprzedawane_produkty sp
 left join kategorie k on sp.Nazwa = k.nazwa
@@ -248,8 +248,8 @@ alter table sprzedawane_produkty
 	,drop column Kasa
 ```
 
-9. Obliczenie ile dni dany produkt był w sprzedaży
-- Sprawdzenie selectem
+9. Obliczamy ile dni dany produkt był w sprzedaży
+- Sprawdzamy selectem
 ```sql
 select 
 	nazwa
@@ -261,7 +261,7 @@ where kategoria = 'pizza'
 group by 1
 ```
 
-- Stworzenie nowych kolumn
+- Tworzymy nowe kolumny
 ```sql
 alter table sprzedawane_produkty 
 	add column dni_w_ofercie varchar(200)
@@ -269,7 +269,7 @@ alter table sprzedawane_produkty
 	,add column last_sale date
 ```
 
-- Wprowadzenie wartości do kolumn w tym wyliczenie ilości dni w ofercie danego produktu
+- Wprowadzamy wartości do kolumn w tym wyliczenie ilości dni w ofercie danego produktu
 ```sql
 update sprzedawane_produkty sp
 join 
@@ -288,8 +288,8 @@ join
 		,sp.dni_w_ofercie = sf.dni_w_ofercie
 ```
 
-10. Poprawa błędu: rozdzielenie pozycji "Prosciutto Crudo". W ofercie jest pizza oraz dodatek do pizzy o tej samej nazwie
-- sprawdzenie selectem
+10. Poprawiamy błąd: rozdzielamy pozycję "Prosciutto Crudo". W ofercie jest pizza oraz dodatek do pizzy o tej samej nazwie
+- sprawdzamy selectem
 ```sql
 select
 	nazwa
@@ -299,14 +299,14 @@ from sprzedawane_produkty
 where nazwa='Prosciutto Crudo' and (Cena_sprzedaż_brutto between 0 and 16)
 ```
 
-- Aktualizacja tabeli
+- Aktualizujemy tabelę
 ```sql
 update sprzedawane_produkty 
 set kategoria = '' 
 where nazwa='Prosciutto Crudo' and (Cena_sprzedaż_brutto between 0 and 16)
 ```
 
-11. Usunięcie transakcji testowych lub błędnych np. z cenami 0,01 zł
+11. Usuwamy transakcje testowe lub błędne np. te z cenami 0,01 zł
 ```sql
 delete from sprzedawane_produkty where kategoria = 'pizza' and (Cena_sprzedaż_brutto between 0 and 16)
 ```
@@ -336,38 +336,50 @@ from sprzedawane_produkty where kategoria = 'pizza'
 
 ## II. (PowerBI) Analiza i wizualizacja danych
 
-1. Wczytanie danych do PowerBI
+1. Wczytujemy dane do PowerBI
 
-2. Analiza i wykresy
+2. Analizujemy i tworzymy wykresy
 
 ![wykres1_2](https://github.com/piotrwojtania/portfolio/blob/784994f89fd16e45a77c7166a7fc283a2c70d700/images/1_2.jpg)
 
-Aby to zrobić stworzyłem dwie dodatkowe kolumny obliczeniowe. Pierwsza kolumna z całkowitą ilością sprzedanych pizz danego rodzaju. Poniżej kod DAX pierwszej kolumny.
+Aby obliczyć średni dzienny wolumen sprzedaży tworzymy dwie dodatkowe kolumny obliczeniowe. Pierwsza kolumna z całkowitą ilością sprzedanych pizz danego rodzaju. Poniżej kod DAX pierwszej kolumny.
 ``` 
 Il. sprzedanych rodzajów pizz total = 
-CALCULATE(SUM(sprzedawane_produkty[Sprzedana_ilość]),ALLEXCEPT(sprzedawane_produkty,sprzedawane_produkty[Nazwa]))
+CALCULATE(
+	SUM(sprzedawane_produkty[Sprzedana_ilość]),
+	ALLEXCEPT(sprzedawane_produkty,sprzedawane_produkty[Nazwa])
+	)
 ```
 
-Druga kolumna z ilością sprzedanych pizz danego rodzaju w przeliczeniu na jeden dzień w którym pizza była w ofercie. Czyli np. jeśli sprzedało się 50 pizz danego rodzaju i pizza była w menu przez 10 dni to wartość w kolumnie będzie 5. Poniżej kod DAX drugiej kolumny. 
+Druga kolumna z ilością sprzedanych pizz danego rodzaju w przeliczeniu na jeden dzień w którym pizza była w ofercie. Czyli np. jeśli sprzedało się 50 pizz danego rodzaju i pizza była w menu przez 10 dni to wartość w kolumnie będzie wynosić 5. Poniżej kod DAX drugiej kolumny. 
 ```
 il. sprzed. pizz na dzień w ofercie = 
-DIVIDE(sprzedawane_produkty[Il. sprzedanych rodzajów pizz total],sprzedawane_produkty[dni_w_ofercie],0)
+DIVIDE(
+	sprzedawane_produkty[Il. sprzedanych rodzajów pizz total],
+	sprzedawane_produkty[dni_w_ofercie],
+	0)
 ```
 
 ![wykres3_4](https://github.com/piotrwojtania/portfolio/blob/dd0e0efb75988550eb9c69dda9b36bc98087e635/images/3_4.jpg)
 
-Grupujemy pokrewne pozycje za pomocąopcji "New group"
+Grupujemy pokrewne pozycje za pomocą opcji "New group"
 ![groups](https://github.com/piotrwojtania/portfolio/blob/497e8f4c1bcb99fc4b224f76097b5a66c2328239/images/groups.jpg)
 
-Musimy teraz obliczyć to co ostatnio tylko dla zgrupowanych pizz. Czyli znów potrzebujemy dwóch dodatkowych kolumn. W pierwszej liczymy całkowitą liczbę sprzedanych pizz (po zgrupowaniu). DAX:
+Musimy teraz obliczyć to co ostatnio (średni dzienny wolumen sprzedaży) ale dla zgrupowanych pizz. Czyli znów potrzebujemy dwóch dodatkowych kolumn. W pierwszej liczymy całkowitą liczbę sprzedanych pizz (po zgrupowaniu). DAX:
 ```
 Il. sprzedanych grup pizz total = 
-CALCULATE(SUM(sprzedawane_produkty[Sprzedana_ilość]),ALLEXCEPT(sprzedawane_produkty,sprzedawane_produkty[Nazwa (groups)]))
+CALCULATE(
+	SUM(sprzedawane_produkty[Sprzedana_ilość]),
+	ALLEXCEPT(sprzedawane_produkty,sprzedawane_produkty[Nazwa (groups)])
+	)
 ```
 W drugiej kolumnie liczymy ilość sprzedanych grup pizz w przeliczeniu na jednen dzień w ofercie. DAX:
 ```
 il. sprzed. grup pizz na dzień w ofercie = 
-DIVIDE(sprzedawane_produkty[Il. sprzedanych grup pizz total], sprzedawane_produkty[dni_w_ofercie],0)
+DIVIDE(
+	sprzedawane_produkty[Il. sprzedanych grup pizz total],
+	sprzedawane_produkty[dni_w_ofercie],
+	0)
 ```
 ![wykres5_6](https://github.com/piotrwojtania/portfolio/blob/14382274eb49838b5444bdfe4a8ed55564be163f/images/5_6_.jpg)
 
@@ -380,10 +392,10 @@ Dni w ofercie (grupa) =
 CALCULATE(
     MAX(sprzedawane_produkty[dni_w_ofercie]),
     ALLEXCEPT(sprzedawane_produkty, sprzedawane_produkty[Nazwa (groups)])
-)
+	)
 ```
 
-Następnie obliczymy ilość sprzedanych pizz (po zgrupowaniu) w przeliczeniu na jeden dzień w ofercie. 
+Następnie obliczamy ilość sprzedanych pizz (po zgrupowaniu) w przeliczeniu na jeden dzień w ofercie. 
 ```
 il. sprzed. grup pizz na dzień w ofercie = 
 DIVIDE(
@@ -391,11 +403,11 @@ DIVIDE(
 	sprzedawane_produkty[Dni w ofercie (grupa)],
 	0)
 ```
-Następnie liczymy marżę dla zgrupowanych pizz. W tabeli "kategorie_1" mamy podane marże dla poszczególnych pozycji. Marże dla grup obliczymy jako średnie ważone marż poszczególnych pizz które składają się na grupę, gdzie wagami będą ilości sprzedanych pizz.  
+Następnie liczymy marżę dla zgrupowanych pizz. W tabeli "kategorie_1" mamy podane marże dla poszczególnych pozycji. Marże dla grup obliczamy jako średnie ważone marż poszczególnych pizz które składają się na grupę, gdzie wagami będą ilości sprzedanych pizz.  
 
 Przykład:  
-Mamy grupe pizz "AB" na którą składają się pizze "A" i pizze "B".  
-Pizza "A" ma marżę 10zł i sprzedało się jej 20 sztuk.  
+Mamy grupę pizz "AB" na którą składają się pizze "A" i pizze "B".  
+Pizza "A" ma marżę 10 zł i sprzedało się jej 20 sztuk.  
 Pizza "B" ma marżę 15 zł i sprzedało się jej 5 sztuk.  
 Licznik = 10x20 + 15x5 = 275  
 Mianownik = 20 + 5 = 25  
