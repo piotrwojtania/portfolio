@@ -10,7 +10,12 @@ Dane wejściowe stanowiły informacje z systemu sprzedażowego POS lokalu.
 
 Pierwszym etapem pracy jest oczyszczenie i transformacja danych przy użyciu języka SQL w programie dBeaver. Następnie dane przenosimy do PowerBI w celu dalszej analizy i wizualizacji.
 
-## I. SQL - Oczyszczenie i przygotowanie danych do analizy 
+Na skróty:
+- [SQL - Oczyszczenie i przygotowanie danych do analizy](#i-sql---oczyszczenie-i-przygotowanie-danych-do-analizy)
+- [PowerBI - Analiza i wizualizacja danych](#ii-powerbi---analiza-i-wizualizacja-danych)
+- [Interaktywne wykresy na portalu powerbi.com](https://app.powerbi.com/links/faiNBUn0f2?ctid=4b059d10-47b6-4296-b9c4-46a2b9526960&pbi_source=linkShare)
+
+## I. SQL - Oczyszczenie i przygotowanie danych do analizy
 
 
 1. Tworzymy kopię zapasową tabeli
@@ -334,7 +339,7 @@ select
 from sprzedawane_produkty where kategoria = 'pizza'	
 ```
 
-## II. (PowerBI) Analiza i wizualizacja danych
+## II. PowerBI - Analiza i wizualizacja danych
 *link do interaktywnych wykresów na portalu powerbi.com:* [klik](https://app.powerbi.com/links/faiNBUn0f2?ctid=4b059d10-47b6-4296-b9c4-46a2b9526960&pbi_source=linkShare)
 
 1. Wczytujemy dane do PowerBI
