@@ -13,7 +13,7 @@ Pierwszym etapem pracy jest oczyszczenie i transformacja danych przy użyciu ję
 Na skróty:
 - [SQL - Oczyszczenie i przygotowanie danych do analizy](#i-sql---oczyszczenie-i-przygotowanie-danych-do-analizy)
 - [PowerBI - Analiza i wizualizacja danych](#ii-powerbi---analiza-i-wizualizacja-danych)
-- [Interaktywne wykresy na portalu powerbi.com](https://app.powerbi.com/links/faiNBUn0f2?ctid=4b059d10-47b6-4296-b9c4-46a2b9526960&pbi_source=linkShare)
+- [Interaktywne wykresy na portalu powerbi.com (wymagane konto Microsoft)](https://app.powerbi.com/links/faiNBUn0f2?ctid=4b059d10-47b6-4296-b9c4-46a2b9526960&pbi_source=linkShare)
 
 ## I. SQL - Oczyszczenie i przygotowanie danych do analizy
 
